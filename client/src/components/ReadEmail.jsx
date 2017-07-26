@@ -98,7 +98,7 @@ class ReadEmail extends React.Component {
                   onClick={this.handleMessageClick.bind(this)} />;
                   })}
               <Table.Row>
-                <Reply />
+                <Reply message={thread[0]}/>
               </Table.Row>
             </Table.Body> 
           </Table>
