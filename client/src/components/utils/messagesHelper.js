@@ -86,3 +86,16 @@ const createEmailAddressArray = (emails) => {
   });
 };
 
+export const createReply = (formData, message) => {
+  if (formData !== null) {
+    
+    let email = {
+      body: formData.emailContentInputField.value,
+      from: message.to,
+      subject: 'RE: ' + message.subject,
+      to: message.from
+    };
+    console.log('EMAIL', email);
+    return email;
+  }
+};
