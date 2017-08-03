@@ -24,7 +24,7 @@ describe('Messages API', function () {
       .get('/api/messages/read/abcde12345')
       .expect(res => {
         res.attributes = {
-          from: ['test@gmail.com'] //undefined
+          from: ['test@gmail.com']
         };
       })
       .expect(302)
@@ -34,7 +34,7 @@ describe('Messages API', function () {
   it('retrieves test data', function(done) {
     Messages.forge().fetchAll()
       .then(res => {
-        expect(res.length).to.equal(7); //0
+        expect(res.length).to.equal(7);
         done();
       })
       .catch(err => { done(err); });

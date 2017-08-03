@@ -193,7 +193,6 @@ exports.seed = function (knex, Promise) {
       return models.Folder.forge({
         folder_id: 'abcd1234',
         account_id: message.get('account_id'),
-        // name: 'inbox',
         color: 'blue',
         count: 30,
         display_name: 'inbox'
@@ -208,7 +207,6 @@ exports.seed = function (knex, Promise) {
       return models.Folder.forge({
         folder_id: 'abcd1236',
         account_id: 'abcdefghijkl1234567890',
-        // name: 'sent',
         color: 'red',
         count: 99,
         display_name: 'sent'
@@ -223,7 +221,6 @@ exports.seed = function (knex, Promise) {
       return models.Folder.forge({
         folder_id: 'abcd1237',
         account_id: 'abcdefghijkl1234567890',
-        // name: 'null',
         color: 'purple',
         count: 10,
         display_name: 'mymail'
@@ -238,7 +235,6 @@ exports.seed = function (knex, Promise) {
       return models.Folder.forge({
         folder_id: 'abcd1235',
         account_id: 'abcdefghijkl1234567890',
-        // name: 'null',
         color: 'green',
         count: 22,
         display_name: 'mymail2'
@@ -253,7 +249,6 @@ exports.seed = function (knex, Promise) {
       return models.Folder.forge({
         folder_id: 'abcd1238',
         account_id: 'abcdefghijkl1234567890',
-        // name: 'trash',
         color: 'orange',
         count: 4,
         display_name: 'trashbin'
@@ -278,60 +273,22 @@ exports.seed = function (knex, Promise) {
     .catch(err => {
       console.log('ERROR: failed to save to join table', err);
     })
-    // .then(contact => {
-    //   console.log('--contact', contact);
-    //   console.log('saving contact for', contact.get('account_id') + '!')
-    //   return models.Contact.forge({
-    //     account_id: contact.get('account_id'),
-    //     contact_id: 'contactid001',
-    //     email: 'abd@abd.com',
-    //     name: 'Abrahm Bad Dog',
-    //     phone_numbers: '[{mobile: "1-000-000-0000"}]'
-    //   }).save(null, saveObj);
-    // })
-    // .catch(err => {
-    //   console.error('ERROR: failed to create contact!', err);
-    // })
+    .then(contact => {
+      console.log('saving contact for abcdefghijkl1234567890 !');
+      return models.Contact.forge({
+        account_id: 'abcdefghijkl1234567890',
+        contact_id: 'contactid001',
+        email: 'abd@abd.com',
+        name: 'Abrahm Bad Dog',
+        phone_numbers: '[{"mobile": "1-000-000-0000"}]'
+      }).save(null, saveObj);
+    })
+    .catch(err => {
+      console.error('ERROR: failed to create contact!', err);
+    })
     .catch(err => {
       console.log('WARNING: potential save issues encountered.', err);
     });
 
 };
-
-//USER_SEED.JS
-// const models = require('../models');
-
-// exports.seed = function (knex, Promise) {
-
-//   return models.Profile.where({ email: 'admin@domain.com' }).fetch()
-//     .then((profile) => {
-//       if (profile) {
-//         throw profile;
-//       }
-//       return models.Profile.forge({
-//         first: 'System',
-//         last: 'Admin',
-//         display: 'Administrator',
-//         email: 'admin@domain.com'
-//       }).save();
-//     })
-//     .error(err => {
-//       console.error('ERROR: failed to create profile');
-//       throw err;
-//     })
-//     .then((profile) => {
-//       return models.Auth.forge({
-//         type: 'local',
-//         password: 'admin123',
-//         profile_id: profile.get('id')
-//       }).save();
-//     })
-//     .error(err => {
-//       console.error('ERROR: failed to create auth');
-//     })
-//     .catch(() => {
-//       console.log('WARNING: default user already exists.');
-//     });
-
-// };
 
